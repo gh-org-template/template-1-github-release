@@ -1,16 +1,13 @@
 ARG OSTYPE=linux-gnu
-ARG ARCHITECTURE=x86_64
+ARG ARCHITECTURE
 ARG DOCKER_REGISTRY=ghcr.io
 ARG DOCKER_IMAGE_NAME
+ARG DOCKER_ARCHITECTURE
+ARG DOCKER_ARCHITECTURE
+ARG OPERATING_SYSTEM
+ARG VERSION=1.1.1
 
-# List out all image permutations to trick dependabot
-FROM --platform=linux/amd64 ghcr.io/gh-org-template/kong-build-images:apk AS x86_64-linux-musl
-FROM --platform=linux/amd64 ghcr.io/gh-org-template/kong-build-images:rpm AS x86_64-linux-gnu
-FROM --platform=linux/arm64 ghcr.io/gh-org-template/kong-build-images:apk AS aarch64-linux-musl
-FROM --platform=linux/arm64 ghcr.io/gh-org-template/kong-build-images:rpm AS aarch64-linux-gnu
-
-# Run the build script
-FROM $ARCHITECTURE-$OSTYPE AS build
+FROM --platform=linux/${DOCKER_ARCHITECTURE} ghcr.io/gh-org-template/kong-build-images:${OPERATING_SYSTEM}-${VERSION} AS build
 
 COPY . /src
 RUN /src/build.sh && /src/test.sh

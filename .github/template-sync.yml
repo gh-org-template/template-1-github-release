@@ -1,6 +1,9 @@
 additional:
   - "kong-openssl"
   - "kong-runtime"
+  - "kong-development"
+  - "kong-package"
+  - "multi-arch-fpm"
 
 files:
   - "!.gitignore"
