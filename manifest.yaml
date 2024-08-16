@@ -32,15 +32,3 @@ targets:
         keyword: "ARG"
         matcher: "VERSION"
     scmid: templateRepo
-
-actions:
-  createPullRequest:
-    kind: "github/pullrequest"
-    scmid: templateRepo
-    spec:
-      title: "chore: Update Dockerfile base image to latest version"
-      description: "This PR updates the Dockerfile base image to the latest version of kong-build-images."
-      labels:
-        - "auto-update"
-      automerge: true
-      draft: false
