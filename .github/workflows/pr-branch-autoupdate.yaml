@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - main
+    - fix/update-prs
 
 jobs:
   update-pull-requests:
@@ -18,7 +19,7 @@ jobs:
           owner: ${{ github.repository_owner }}
 
       - name: Update ALL THE PRS! 🎉
-        uses: castastrophe/actions-pr-auto-update
+        uses: castastrophe/actions-pr-auto-update@v1.1.0
         with:
           token: ${{ steps.app-token.outputs.token }}
           limit: 10
